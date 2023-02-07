@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Button } from '@tarojs/components';
-// import { Button } from '@tarojs/components/dist-h5/react';
-// import { Loading } from 'retaroct-ui';
+import Taro from '@tarojs/taro';
 import './App.css';
 console.log('Button: ', Button);
 
@@ -10,8 +9,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <Button>Taro</Button> */}
-        {/* <Loading /> */}
+        <Button onClick={() => {
+          Taro.showToast({title: '啊啊啊'})
+        }}>Taro button</Button>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

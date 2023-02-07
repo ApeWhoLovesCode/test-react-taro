@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { applyPolyfills, defineCustomElements } from '@tarojs/components/loader'
 import '@tarojs/components/dist/taro-components/taro-components.css'
 
+/**
+ * taro-h5的polyfill
+ * 手动注册web components
+ * 手动引入web componts的样式
+ */
 applyPolyfills().then(() => {
   defineCustomElements(window)
 })
