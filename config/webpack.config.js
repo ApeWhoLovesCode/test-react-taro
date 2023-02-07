@@ -315,7 +315,7 @@ module.exports = function (webpackEnv) {
         'react-native': 'react-native-web',
         // 配置taro
         // '@tarojs/taro': '<rootDir>/__mock__/tarojs/taro-h5',
-        // '@tarojs/taro': '@tarojs/taro-h5',
+        '@tarojs/taro': '@tarojs/taro-h5',
         '@tarojs/components$': '@tarojs/components/dist-h5/react',
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
@@ -324,7 +324,6 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
       },
-      mainFields: ['main:h5', 'browser', 'module', 'main'],
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
         // This often causes confusion because we only process files within src/ with babel.
@@ -751,6 +750,17 @@ module.exports = function (webpackEnv) {
               }),
             },
           },
+        }),
+        // taro 配置
+        new webpack.DefinePlugin({
+          'process.env.TARO_ENV': JSON.stringify('h5'),
+          ENABLE_INNER_HTML: JSON.stringify(false),
+          ENABLE_ADJACENT_HTML: JSON.stringify(false),
+          ENABLE_SIZE_APIS: JSON.stringify(false),
+          ENABLE_TEMPLATE_CONTENT: JSON.stringify(false),
+          ENABLE_CLONE_NODE: JSON.stringify(false),
+          ENABLE_CONTAINS: JSON.stringify(false),
+          ENABLE_MUTATION_OBSERVER: JSON.stringify(false),
         }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
