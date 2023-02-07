@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// 解决 taro/component 为 undefined
 import { applyPolyfills, defineCustomElements } from '@tarojs/components/loader'
 import '@tarojs/components/dist/taro-components/taro-components.css'
 

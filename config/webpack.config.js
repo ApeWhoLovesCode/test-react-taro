@@ -313,8 +313,9 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        // 配置taro
         // '@tarojs/taro': '<rootDir>/__mock__/tarojs/taro-h5',
-        '@tarojs/taro': '@tarojs/taro-h5',
+        // '@tarojs/taro': '@tarojs/taro-h5',
         '@tarojs/components$': '@tarojs/components/dist-h5/react',
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
@@ -323,6 +324,7 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
       },
+      mainFields: ['main:h5', 'browser', 'module', 'main'],
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
         // This often causes confusion because we only process files within src/ with babel.
